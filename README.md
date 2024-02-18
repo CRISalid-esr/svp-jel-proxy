@@ -2,11 +2,12 @@
 
 This project is a variation over
 the [Apache Jena Fuseki Docker Tools](https://jena.apache.org/documentation/fuseki2/fuseki-docker.html).
-This project is a utility that allows injecting the [JEL](https://www.aeaweb.org/econlit/jelCodes.php) vocabulary
-vocabulary at the time of building the Fuseki Docker image to obtain a turnkey Docker container that can be used as a
+This project is a utility that allows injecting the [JEL](https://www.aeaweb.org/econlit/jelCodes.php) vocabulary at the
+time of building the Fuseki Docker image to obtain a turnkey Docker container that can be used as a
 proxy to resolve JEL URLs.
 The original source is not directly usable due to performance or availability limitations.
-The project is primarily intended for use within the SoVisu+ project but can be used in any context where the JEL vocabulary is needed.
+The project is primarily intended for use within the SoVisu+ project but can be used in any context where the JEL
+vocabulary is needed.
 
 ## Provided vocabulary
 
