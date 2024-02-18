@@ -1,0 +1,41 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dc: <http://purl.org/dc/terms/>
+
+CONSTRUCT {
+  ?concept rdf:type skos:Concept ;
+           skos:prefLabel ?prefLabel ;
+           skos:altLabel ?altLabel ;
+           skos:notation ?notation ;
+           skos:relatedMatch ?relatedMatch ;
+           skos:narrowMatch ?narrowMatch ;
+           skos:broadMatch ?broadMatch ;
+           skos:inScheme ?scheme ;
+           dc:isPartOf ?dataset ;
+           rdfs:label ?label .
+  ?scheme rdf:type skos:ConceptScheme ;
+          skos:prefLabel ?schemeLabel .
+  ?dataset rdf:type void:Dataset ;
+           rdfs:label ?datasetLabel .
+}
+WHERE {
+  BIND(<http://zbw.eu/beta/external_identifiers/jel#E24> AS ?concept)
+
+  OPTIONAL { ?concept skos:prefLabel ?prefLabel . }
+  OPTIONAL { ?concept skos:altLabel ?altLabel . }
+  OPTIONAL { ?concept skos:notation ?notation . }
+  OPTIONAL { ?concept skos:relatedMatch ?relatedMatch . }
+  OPTIONAL { ?concept skos:narrowMatch ?narrowMatch . }
+  OPTIONAL { ?concept skos:broadMatch ?broadMatch . }
+  OPTIONAL { ?concept skos:inScheme ?scheme .
+             ?scheme skos:prefLabel ?schemeLabel . }
+  OPTIONAL { ?concept dc:isPartOf ?dataset .
+             ?dataset rdfs:label ?datasetLabel . }
+
+  OPTIONAL {
+    ?concept rdfs:label ?label .
+    FILTER (LANG(?label) = "en" || LANG(?label) = "de" || LANG(?label) = "fr" || LANG(?label) = "es")
+  }
+}
