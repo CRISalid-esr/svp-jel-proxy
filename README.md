@@ -63,25 +63,7 @@ curl -X POST -H "Content-Type: application/sparql-query" --data "SELECT * WHERE 
 ```
 
 ```sql
-QUERY
-=
-$(cat docs/construct_example.sparql | tr -d '\n')
-ENCODED_QUERY
-=
-$(python -c "import urllib.parse; print(urllib.parse.quote('''$QUERY''')
-)
-")
-curl "
-http
-://
-localhost
-:
-3030/
-jel/
-sparql
-?
-query
-=
-$ENCODED_QUERY
-"
+QUERY=$(cat docs/construct_example.sparql | tr -d '\n')
+ENCODED_QUERY=$(python -c "import urllib.parse; print(urllib.parse.quote('''$QUERY'''))")
+curl "http://localhost:3030/jel/sparql?query=$ENCODED_QUERY"
 ```
