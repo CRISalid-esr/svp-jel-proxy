@@ -36,13 +36,13 @@ was accessible.
 ### Build docker package
 
 ```bash
-docker image build --build-arg JENA_VERSION=5.0.0-rc1 -t svp-jel-proxy:v0 .
+docker image build --build-arg JENA_VERSION=6.0.0 -t svp-jel-proxy:1.0 .
 ```
 
 ### Run the docker container
 
 ```bash
-docker container run --rm -it -p 3030:3030 --name svp-jel-proxy svp-jel-proxy:v0
+docker container run --rm -it -p 3030:3030 --name svp-jel-proxy svp-jel-proxy:1.0
 ```
 
 ### Use docker-compose
